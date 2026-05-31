@@ -9,6 +9,11 @@ document.getElementById("search").addEventListener("click",async () =>{
 
     const data =  await response.json();
     console.log(data);
+
+    if (data.cod !== 200){
+        alert("City not found");
+        return;
+    }
     document.getElementById("temp").innerText = "Temperature: " + data.main.temp + "°C";
     document.getElementById("mood").innerText = "Weather: " + data.weather[0].main;
     document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
