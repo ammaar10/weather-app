@@ -6,6 +6,10 @@ async function GetWeather(){
 
     if (city.trim() === ""){
         alert("Please enter a city");
+        document.getElementById("temp").innerText = "Temperature: --";
+        document.getElementById("mood").innerText = "Weather: --";
+        document.getElementById("humidity").innerText = "Humidity: --"
+        document.getElementById("wind").innerText = "Wind: --"
         return;
     }
 
@@ -18,6 +22,10 @@ async function GetWeather(){
 
     if (data.cod !== 200){
         alert("City not found");
+        document.getElementById("temp").innerText = "Temperature: " + data.main.temp + "°C";
+        document.getElementById("mood").innerText = "Weather: " + data.weather[0].main;
+        document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
+        document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " m/s";
         return;
     }
 
