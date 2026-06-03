@@ -18,6 +18,8 @@ async function GetWeather(){
 
     const response = await fetch(url);
     const data =  await response.json();
+
+    document.getElementById("cityname").innerText = data.name;
     console.log(data);
 
     if (data.cod !== 200){
