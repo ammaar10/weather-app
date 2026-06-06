@@ -1,7 +1,6 @@
 
 async function GetWeather(){
-     document.getElementById("temp").innerText = "Loading...";
-     
+    document.getElementById("temp").innerText = "Loading...";
     const city = document.getElementById("city").value;
 
     if (city.trim() === ""){
@@ -31,17 +30,25 @@ async function GetWeather(){
         return;
     }
 
+
     document.getElementById("temp").innerText = "Temperature: " + data.main.temp + "°C";
     document.getElementById("mood").innerText = "Weather: " + data.weather[0].main;
     document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
     document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " m/s";
 
+    localStorage.setItem("city",city)
+
     const iconCode = data.weather[0].icon;
     document.getElementById("weatherIcon").src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-    
+
 }
 
+const savedCity = localStorage.getItem("city")
 
+if (savedCity){
+    document.getElementById("city").value = savedCity;
+    GetWeather();
+}
 
 document.getElementById("search").addEventListener("click",GetWeather);
 document.getElementById("city").addEventListener("keydown",(event) => {
