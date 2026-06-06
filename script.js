@@ -36,6 +36,15 @@ async function GetWeather(){
     document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
     document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " m/s";
 
+    const weather = data.weather[0].main;
+
+    if (weather === "Clear"){
+        document.body.style.background = "lightblue";
+    }
+    else if (weather === "Clouds"){
+        document.body.style.background = "coral"
+    }
+
     localStorage.setItem("city",city)
 
     const iconCode = data.weather[0].icon;
