@@ -35,7 +35,12 @@ async function GetWeather(){
     document.getElementById("mood").innerText = "Weather: " + data.weather[0].main;
     document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
     document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " m/s";
+
+    const iconCode = data.weather[0].icon;
+    document.getElementById("weatherIcon").src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    
 }
+
 
 
 document.getElementById("search").addEventListener("click",GetWeather);
@@ -44,3 +49,5 @@ document.getElementById("city").addEventListener("keydown",(event) => {
         GetWeather();
     }
 });
+
+
